@@ -6,7 +6,7 @@
   <description />
   <settings>
     <parameters>
-      <param name="system.ssh.server" value="" spec="text description='SSH Server address' display='normal' label='SSH host:' validationMode='not_empty'" />
+      <param name="system.ssh.host" value="" spec="text description='SSH Server address' display='normal' label='SSH host:' validationMode='not_empty'" />
       <param name="system.ssh.port" value="22" spec="text display='normal' label='SSH port:' regexp='|[0-9|]+' validationMessage='Invalid port number' validationMode='regex'" />
       <param name="system.ssh.user" value="" spec="text display='normal' label='Username:' validationMode='any'" />
       <param name="system.ssh.password" value="" spec="password display='normal' label='Password:' validationMode='not_empty'" />
