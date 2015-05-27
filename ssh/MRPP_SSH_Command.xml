@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build-type SYSTEM "../../../project-config.dtd">
+
+<build-type>
+  <name>Execute command using SSH</name>
+  <description />
+  <settings>
+    <parameters>
+      <param name="system.ssh.server" value="" spec="text description='SSH Server address' display='normal' label='SSH host:' validationMode='not_empty'" />
+      <param name="system.ssh.port" value="22" spec="text display='normal' label='SSH port:' regexp='|[0-9|]+' validationMessage='Invalid port number' validationMode='regex'" />
+      <param name="system.ssh.user" value="" spec="text display='normal' label='Username:' validationMode='any'" />
+      <param name="system.ssh.password" value="" spec="password display='normal' label='Password:' validationMode='not_empty'" />
+      <param name="system.ssh.cmd" value="" spec="text description='Enter your SSH command to be executed' display='normal' label='SSH Command:' validationMode='any'" />
+    </parameters>
+    <build-runners>
+      <runner id="LONGDT_01" name="Execute SSH command on target server" type="Ant">
+        <parameters>
+          <param name="build-file"><![CDATA[<project name="SSH Command execute">
+
+<target name="execCommand">
+  <sshexec host="${ssh.host}"
+    port="${ssh.port}"
+    username="${ssh.user}"
+    password="${ssh.password}"
+    command="${ssh.cmd}"/>
+</target>
+
+</project>]]></param>
+          <param name="build-file-path" value="build.xml" />
+          <param name="target" value="execCommand" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use-custom-build-file" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings checkout-mode="ON_SERVER" labeling-type="NONE" labeling-pattern="build-%system.build.number%" />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+
