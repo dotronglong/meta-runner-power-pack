@@ -22,7 +22,8 @@
     port="${ssh.port}"
     username="${ssh.user}"
     password="${ssh.password}"
-    command="${ssh.cmd}"/>
+    command="${ssh.cmd}"
+    trust="yes"/>
 </target>
 
 </project>]]></param>
